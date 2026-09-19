@@ -8,12 +8,21 @@ from aiogram.enums import ParseMode
 import config as cfg
 
 
+#handlers
+from handlers import start
+
+
 bot = Bot(
     token=cfg.TOKEN,
     default=DefaultBotProperties(parse_mode=ParseMode.HTML)
 )
 
 dp = Dispatcher()
+
+
+
+# ROUTERS
+dp.include_router(start.router)
 
 
 async def main():
