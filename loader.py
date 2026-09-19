@@ -9,7 +9,7 @@ import config as cfg
 
 
 #handlers
-from handlers import start
+from handlers import start, back_to, profile
 
 
 bot = Bot(
@@ -23,6 +23,8 @@ dp = Dispatcher()
 
 # ROUTERS
 dp.include_router(start.router)
+dp.include_router(back_to.router)
+dp.include_router(profile.router)
 
 
 async def main():

@@ -13,7 +13,8 @@ class UsersDB:
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 user_id INTEGER UNIQUE,
                 username TEXT,
-                balance INTEGER DEFAULT 0
+                balance INTEGER DEFAULT 0,
+                acess_level INTEGER DEFAULT 0
             )
         ''')
         self.conn.commit()
@@ -39,6 +40,15 @@ class UsersDB:
             WHERE user_id = ?
         ''', (amount, user_id))
         self.conn.commit()
+
+    def update_access_level(self, user_id, access_level):
+        self.cursor.execute('''
+            UPDATE users
+            SET acess_level = ?
+            WHERE user_id = ?
+        ''', (access_level, user_id))
+        self.conn.commit()
+
 
     def close(self):
         self.conn.close()
