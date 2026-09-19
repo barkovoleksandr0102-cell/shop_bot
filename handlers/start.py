@@ -2,6 +2,7 @@ from aiogram import Router
 from aiogram.filters import Command
 from aiogram.types import Message
 import keyboards.start_kb as kb
+from database.users_db import DB as db
 
 
 router = Router()
@@ -24,3 +25,5 @@ async def start_handler(message: Message):
 
 👇 <b>Выбери нужный раздел:</b>"""
     )
+
+    db.add_user(user_id=message.from_user.id, username=message.from_user.username)
